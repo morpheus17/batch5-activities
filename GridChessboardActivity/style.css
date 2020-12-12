@@ -1,0 +1,30 @@
+.chessboard {
+    display:grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(8, [col] 6vw);
+    grid-template-rows: repeat(8, [row] 6vw);
+    width: 48vw;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;        
+    border:2px black solid;
+    box-shadow: 7px 7px 8px #777;
+    margin-top:2vh;
+}
+
+.cell{
+    background-color: #FFF8C6;
+    text-align: center;
+    padding-top: 1vh;
+    text-align: center;    
+}
+.b{
+    background-color: #4863A0;
+}
+
+img{
+    z-index: 200;
+    width: 50%;
+    height:auto;
+    /* max-width:100%; */
+}

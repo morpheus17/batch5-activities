@@ -1,0 +1,94 @@
+<!--
+h1{
+    text-align: center;
+    color:slategray;
+}
+h3{
+    position: relative;
+    right:0px;
+    color:darkslategrey;
+}
+img{
+    width:400px;
+    height:300px;
+}
+html{
+    height:100%;
+}
+body{
+    background-image:url("https://image.freepik.com/free-photo/white-sand-texture-beach-background_8087-3480.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div{
+    margin:auto;
+}
+ul{
+    list-style-type: none;
+}
+
+#Header{
+    display: block;
+    width: 100vw;
+    height: 70px;
+    background-color: grey;
+
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  
+  #HeaderAssets{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    height: 100%;
+    padding: 0 10px;
+  }
+  
+  #HeaderAssets span {
+    font-size: 20px;
+    color: white;
+  }
+
+  #explanation{
+    position: absolute;
+    top:150%;
+    left:10px;
+    font-size:17px;
+    color: lightslategray;
+    text-align: center;
+  }
+
+  img{
+    max-width:100%;
+    max-height: 100%;
+  }
+
+
+#thirdDiv{
+    height:600px;
+    width:500px;
+    background-color: gainsboro;
+    padding:50px;
+    border:1px solid lightgrey;
+}
+#spanId{
+    font-size:18px;
+    margin:50px;
+}
+.divClass{
+    position: absolute;
+    top:40%;
+    left:30%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+-->

@@ -1,0 +1,30 @@
+.chessboard {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    border:1px black solid;
+    /* margin-top:15vh; */
+    padding:0;
+    margin:0 auto;
+}
+
+.cell{
+    width: 12.5%;
+    height:12.5%;
+    background-color: white;
+    margin:auto;
+    text-align: center;
+}
+.b{
+    background-color: darkgrey;
+}
+
+img{
+    z-index: 200;
+    width: 50%;
+    height:auto;
+    margin-top:3px;
+    /* max-width:100%; */
+}
