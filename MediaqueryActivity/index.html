@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <title>Product Landing page</title>
+</head>
+<body>
+    <header id="header">
+        <img src="assets/logo2.png" id="header-img">
+        <nav id="nav-bar">
+            <ul>
+                <li class="nav-link"><a href="#home">Home</a></li>
+                <li class="nav-link"><a href="#about">About</a></li>
+                <li class="nav-link"><a href="#services">Services</a></li>
+                <li class="nav-link"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <img src="assets/home2.png">
+        <div>
+            <h1>RPA Solutions</h1>
+            <h3>To improve your business</h3>
+            <p>Use the contact form at the bottom of the page for inquiries on a automated model that would suit your business needs</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h1>What is RPA and how does it work</h1>
+        <iframe src="https://www.youtube.com/embed/9URSbTOE4YI"></iframe>        
+    </section>
+
+    <section id="services">
+        <div id="services-header">
+            <h1>Our Services</h1>
+            <p>Fast and high quality solutions delivery </p>
+        </div>
+        <div class="services-content">
+            <img src="assets/services-content-versatile.png">
+            <h1>Versatile</h1>
+            <p>Adaptable to business needs</p>
+        </div>
+        <div class="services-content">
+            <img src="assets/services-content-workflow.png">
+            <h1>Fast workflow</h1>
+            <p>Guaranteed increase in efficiency and effectiveness</p>
+        </div>
+        <div class="services-content">
+            <img src="assets/services-content-chat.png">
+            <h1>24/7 quick chat support</h1>
+            <p>Top notch support ready to assist client inquiries</p>
+        </div>
+        
+
+    </section>
+
+    <section id="contact">
+        
+        <form id="form" action="action_page.php">
+            <h1>Contact Us</h1>
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" placeholder="youremail@example.com" required>
+            
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="philippines">Philippines</option>
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+            </select>
+        
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message.." style="height:200px"></textarea>
+        
+            <input type="submit" id="submit" value="Submit">
+        
+          </form>
+    </section>
+    <footer></footer>
+</body>
+</html>
