@@ -11,13 +11,14 @@ body{
     display:flex;
     flex-direction: row;
     height:7vh;
-    width:100%;
+    width:100vw;
     justify-content: space-around;
     align-items: center;
 
     position: fixed;
     background-color:#d9d9d9;
     margin-top:0;
+    z-index: 100;
 }
 
 #header-img{
@@ -57,6 +58,10 @@ body{
     width: 100%;
 }
 
+#hamburger-menu{
+    display:none;
+}
+
 #home{
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -64,6 +69,7 @@ body{
     justify-items: center;
     justify-content: center;
 
+    top:7vh;
     height:93vh;
     width:100%;
     padding:0;
@@ -168,4 +174,77 @@ body{
 
 #form input[type=submit]{
     height:50px;
+}
+
+
+
+
+@media only screen and (max-width:640px){
+    #header-img{
+        width:150px;
+    }
+
+    .nav-link a{
+        font-size: 12px;
+    }
+
+
+
+    #about iframe{
+        width:320px;
+        height:240px;
+    }
+}
+
+@media only screen and (max-width:480px){
+    #nav-bar{
+        display:none;
+    }
+
+    #hamburger-menu{
+        display: inline-block;
+        width: 40vw;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    #home{
+        font-size:17px;
+    }
+
+    #home p{
+        font-size:10px;
+    }
+
+    #about h1{
+        font-size: 17px;
+    }
+
+    #about iframe{
+        width:240px;
+        height:160px;
+    }
+
+    #services-header{
+        font-size:15px;
+    }
+
+    #services-header{
+        font-size:15px;
+    }
+
+    .services-content{
+        font-size:12px;
+    }
+
+    #form{
+        font-size: 17px;
+        width:280px;
+    }
+    
+    #form > label,input,select,textarea{
+        font-size:12px;
+    }
+
+    
 }
