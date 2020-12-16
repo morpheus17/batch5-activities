@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <title>Survey form</title>
+</head>
+<body>
+
+    <section id="contact">
+        <h1 id="title">Contact Us</h1>
+        <p id="description">We need your feedback to know how we can improve</p>
+        <form id="survey-form" action="contact.html">
+            <ul>
+                <li><label id="name-label" for="name"><h4>Enter your Name:</h4></label>
+                <input type="text" id="name" name="name" placeholder="John Smith" required></li>
+
+                <li><label id="email-label" for="email"><h4>Enter your email:</h4></label>
+                <input type="email" id="email" name="email" placeholder="youremail@example.com" required></li>
+                
+                <li><label id="number-label" for="number"><h4>Rate our service (1-10):</h4></label>
+                <input type="number" id="number" name="number" min="1" max="10" placeholder="10" required></li>
+            </ul>
+            
+            <ul>
+                <li>
+                <label for="dropdown"><h4>Country</h4></label>
+                <select id="dropdown" name="dropdown">
+                    <option value="philippines">Philippines</option>
+                    <option value="australia">Australia</option>
+                    <option value="canada">Canada</option>
+                    <option value="usa">USA</option>
+                </select>
+                </li>
+            </ul>
+
+            <ul id="radio-selections">
+                <h4>Gender</h4>
+                
+                <li><label for="male">Male</label><input type="radio" id="male" name="gender" value="male">
+                <label for="female">Female</label><input type="radio" id="female" name="gender" value="female">
+                <label for="other">Other</label><input type="radio" id="other" name="gender" value="other"></li>
+                
+            </ul>
+
+            <ul id="radio-selections">
+                <h4>Marital status</h4>
+                <li><label for="male">Single</label><input type="radio" id="single" name="marital" value="single">
+                <label for="female">Married</label><input type="radio" id="married" name="marital" value="married"></li>
+            </ul> 
+
+            <ul>
+                <li><label for="offer"> Receive promotional offers</label><input type="checkbox" id="offer" name="offer" value="yes"></li>
+                <li><label for="newsletter"> Subscribe to our newsletter</label><input type="checkbox" id="newsletter" name="newsletter" value="yes"></li>
+            </ul>
+
+            <ul>
+                <li><label for="comment"><h4>Additional Comments</h4></label></li>
+                <li><textarea id="comment" name="comment" placeholder="Your Message.." style="height:200px" required></textarea></li>
+                
+            </ul>
+            <ul>
+            <li><input type="submit" id="submit" value="Submit"></li>
+            </ul>
+          </form>
+    </section>
+    
+</body>
+</html>
