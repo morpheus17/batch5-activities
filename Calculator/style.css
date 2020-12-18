@@ -1,0 +1,98 @@
+#calc{
+    display:grid;
+    grid-gap: 0;
+    grid-template-columns: repeat(5, [col] 6vw);
+    grid-template-rows: repeat(6, [row] 6vw);
+    /* row-gap: 2px; */
+    column-gap:6px;
+    justify-content: center;
+    align-content: center;
+
+    border:3px solid black;
+    border-radius: 5px;
+    width:35vw;
+    margin:10vh auto;
+    padding-top:5px;
+    padding-bottom:5px;
+
+    background-color:#193366;
+}
+
+#screen-top{
+    border-left:2px solid black;
+    border-right:2px solid black;
+    border-top:2px solid black;
+    border-bottom:2px solid #cceeff;
+
+    grid-column-start: 1;
+    grid-column-end: 6;
+    text-align: right;
+
+    font-size:15px;
+    background-color:#cceeff;
+    row-gap: 0;
+}
+
+#screen{
+    border-left:2px solid black;
+    border-right:2px solid black;
+    border-top:2px solid black;
+    border-top:1px solid #cceeff;
+
+    row-gap: 0;
+
+    grid-column-start: 1;
+    grid-column-end: 6;
+    text-align: right;
+
+    font-size:30px;
+
+    background-color:#cceeff;
+
+}
+
+#equals{
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 7;
+}
+
+#zero{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+.buttons{
+    font-size: 25px;
+    border-radius: 6px;
+    opacity: 0.8;
+}
+
+.buttons:hover {
+    background-color: lightgray; /* Green */
+    color: white;
+    opacity: 1;
+  }
+
+.buttons:active {
+background-color: lightgray;
+box-shadow: 0 5px #666;
+transform: translateY(0.5px);
+}  
+
+@media only screen and (max-width:640px){
+    
+    #screen-top{
+        font-size:10px;
+    }
+
+    #screen{
+        font-size:15px;
+    }
+    .buttons{
+        font-size: 11px;
+    }
+}
