@@ -204,8 +204,9 @@ body{
     #hamburger-menu{
         display: inline-block;
         width: 40vw;
-        text-align: center;
+        text-align: right;
         font-size: 25px;
+
     }
 
     #home{

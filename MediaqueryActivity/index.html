@@ -19,7 +19,7 @@
                 <li class="nav-link"><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <div id="hamburger-menu">☰</div>
+        <button type="button" id="hamburger-menu" >☰</div>
     </header>
     <section id="home">
         <img src="assets/home2.png">
@@ -82,5 +82,17 @@
           </form>
     </section>
     
+    <script>
+        function openNav(){
+            var x = document.getElementsByClassName("nav-link");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }            
+        }
+
+    </script>
+
 </body>
 </html>
