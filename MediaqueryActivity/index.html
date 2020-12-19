@@ -13,13 +13,15 @@
         <img src="assets/logo2.png" id="header-img">
         <nav id="nav-bar">
             <ul>
+                <button type="button" id="hamburger-menu" onclick="openNav()" >☰</button>
                 <li class="nav-link"><a href="#home">Home</a></li>
                 <li class="nav-link"><a href="#about">About</a></li>
                 <li class="nav-link"><a href="#services">Services</a></li>
                 <li class="nav-link"><a href="#contact">Contact</a></li>
+                
             </ul>
         </nav>
-        <button type="button" id="hamburger-menu" >☰</div>
+        
     </header>
     <section id="home">
         <img src="assets/home2.png">
@@ -83,13 +85,22 @@
     </section>
     
     <script>
-        function openNav(){
-            var x = document.getElementsByClassName("nav-link");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }            
+        function openNav() {  
+            alert("Nav button currently not functional, still buggy");
+            // for (let x of document.getElementsByClassName("nav-link")){
+            //     if (x.style.display === "inline-block") {
+            //         x.style.display = "none";
+            //         let nav = document.querySelector("#nav-bar");
+            //         nav.querySelector("ul").style.flexDirection="row";
+            //     } else {
+            //         x.style.display = "inline-block";
+            //         let nav = document.querySelector("#nav-bar");
+            //         nav.querySelector("ul").style.flexDirection="column";
+                    
+            //     }
+            // }
+
+
         }
 
     </script>
