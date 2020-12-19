@@ -1,6 +1,10 @@
 ## Activity List
 
-- [Tribute page](/TributeActivity/index.html).
+- [Best Practice](/BestPracticeActivity/homework.html)
+- [Letter markup](/LetterActivity/index.html)
+- [Tribute page](/TributeActivity/index.html)
 - [Responsive chessboard using Flexbox](/ChessboardActivity/index.html)
 - [Responsive chessboard using Grid](/GridChessboardActivity/index.html)
+- [MediaQuery Product Landing page](/MediaqueryActivity/index.html)
+- [Surveyform](/SurveyformActivity/index.html)
 - [Coding Challenge BMI](https://jsfiddle.net/2hosnxey/17/)
