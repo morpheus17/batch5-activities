@@ -1,4 +1,5 @@
-.chessboard {
+
+#chessboard {
     display:grid;
     grid-gap: 0;
     grid-template-columns: repeat(8, [col] 6vw);
