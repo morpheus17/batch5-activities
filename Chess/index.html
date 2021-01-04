@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Drag-and-Drop Example</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" async></script>
+  </head>
+  <body>
+    <!-- <div class="example-parent">
+        <div class="example-origin">
+          <div id="draggable-1" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+            draggable
+          </div>
+        </div>
+      
+        <div class="example-dropzone" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+          dropzone
+        </div>
+    </div> -->
+    <div id="chessboard" class="chessboard">
+        <!--first-->
+        <div class="cell" id="a8"><img class="pieces rook" id="BR1" src="assets/brook.png"></div>
+        <div class="cell b" id="b8"><img class="pieces knight" id="BKn1" src="assets/bknight.png"></div>
+        <div class="cell" id="c8"><img class="pieces bishop" id="BB1" src="assets/bbishop.png"></div>
+        <div class="cell b" id="d8"><img class="pieces queen" id="BQ" src="assets/bqueen.png"></div>
+        <div class="cell" id="e8"><img class="pieces king" id="BK" src="assets/bking.png"></div>
+        <div class="cell b" id="f8"><img class="pieces bishop" id="BB2" src="assets/bbishop.png"></div>
+        <div class="cell" id="g8"><img class="pieces knight" id="BKn2" src="assets/bknight.png"></div>
+        <div class="cell b" id="h8"><img class="pieces rook" id="BR2" src="assets/brook.png"></div>
+
+        <!--second-->
+        <div class="cell b" id="a7"><img class="pieces bpawn" id="BP1" src="assets/bpawn.png"></div>
+        <div class="cell" id="b7"><img class="pieces bpawn" id="BP2" src="assets/bpawn.png"></div>
+        <div class="cell b" id="c7"><img class="pieces bpawn" id="BP3" src="assets/bpawn.png"></div>
+        <div class="cell" id="d7"><img class="pieces bpawn" id="BP4" src="assets/bpawn.png"></div>
+        <div class="cell b" id="e7"><img class="pieces bpawn" id="BP5" src="assets/bpawn.png"></div>
+        <div class="cell" id="f7"><img class="pieces bpawn" id="BP6" src="assets/bpawn.png"></div>
+        <div class="cell b" id="g7"><img class="pieces bpawn" id="BP7" src="assets/bpawn.png"></div>
+        <div class="cell" id="h7"><img class="pieces bpawn" id="BP8" src="assets/bpawn.png"></div>
+
+        <!--third-->
+        <div class="cell" id="a6"></div>
+        <div class="cell b" id="b6"></div>
+        <div class="cell" id="c6"></div>
+        <div class="cell b" id="d6"></div>
+        <div class="cell" id="e6"></div>
+        <div class="cell b" id="f6"></div>
+        <div class="cell" id="g6"></div>
+        <div class="cell b" id="h6"></div>
+        <!--fourth-->
+        <div class="cell b" id="a5"></div>
+        <div class="cell" id="b5"></div>
+        <div class="cell b" id="c5"></div>
+        <div class="cell" id="d5"></div>
+        <div class="cell b" id="e5"></div>
+        <div class="cell" id="f5"></div>
+        <div class="cell b" id="g5"></div>
+        <div class="cell" id="h5"></div>
+        <!--fifth-->
+        <div class="cell" id="a4"></div>
+        <div class="cell b" id="b4"></div>
+        <div class="cell" id="c4"></div>
+        <div class="cell b" id="d4"></div>
+        <div class="cell" id="e4"></div>
+        <div class="cell b" id="f4"></div>
+        <div class="cell" id="g4"></div>
+        <div class="cell b" id="h4"></div>
+        <!--sixth-->
+        <div class="cell b" id="a3"></div>
+        <div class="cell" id="b3"></div>
+        <div class="cell b" id="c3"></div>
+        <div class="cell" id="d3"></div>
+        <div class="cell b" id="e3"></div>
+        <div class="cell" id="f3"></div>
+        <div class="cell b" id="g3"></div>
+        <div class="cell" id="h3"></div>
+        <!--seventh-->
+        <div class="cell" id="a2"><img class="pieces wpawn" id="WP1" src="assets/wpawn.png"></div>
+        <div class="cell b" id="b2"><img class="pieces wpawn" id="WP2" src="assets/wpawn.png"></div>
+        <div class="cell" id="c2"><img class="pieces wpawn" id="WP3" src="assets/wpawn.png"></div>
+        <div class="cell b" id="d2"><img class="pieces wpawn" id="WP4" src="assets/wpawn.png"></div>
+        <div class="cell" id="e2"><img class="pieces wpawn" id="WP5" src="assets/wpawn.png"></div>
+        <div class="cell b" id="f2"><img class="pieces wpawn" id="WP6" src="assets/wpawn.png"></div>
+        <div class="cell" id="g2"><img class="pieces wpawn" id="WP7" src="assets/wpawn.png"></div>
+        <div class="cell b" id="h2"><img class="pieces wpawn" id="WP8" src="assets/wpawn.png"></div>
+        <!--eigth-->
+        <div class="cell b" id="a1"><img class="pieces rook" id="WR1" src="assets/wrook.png"></div>
+        <div class="cell" id="b1"><img class="pieces knight" id="WKn1" src="assets/wknight.png"></div>
+        <div class="cell b" id="c1"><img class="pieces bishop" id="WB1" src="assets/wbishop.png"></div>
+        <div class="cell" id="d1"><img class="pieces queen" id="WQ" src="assets/wqueen.png"></div>
+        <div class="cell b" id="e1"><img class="pieces king" id="WK" src="assets/wking.png"></div>
+        <div class="cell" id="f1"><img class="pieces bishop" id="WB2" src="assets/wbishop.png"></div>
+        <div class="cell b" id="g1"><img class="pieces knight" id="WKn2" src="assets/wknight.png"></div>
+        <div class="cell" id="h1"><img class="pieces rook" id="WR2" src="assets/wrook.png"></div>
+
+    </div>
+    <div id="infomenu">
+        <div id="captured_pieces"></div>
+    </div>
+
+  </body>
+</html>
+
+
