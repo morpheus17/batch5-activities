@@ -9,3 +9,4 @@
 - [Surveyform](/SurveyformActivity/index.html)
 - [Coding Challenge BMI](https://jsfiddle.net/2hosnxey/17/)
 - [Calculator](/Calculator/index.html)
+- [Chess](/Chess/index.html)
