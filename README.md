@@ -10,3 +10,4 @@
 - [Coding Challenge BMI](https://jsfiddle.net/2hosnxey/17/)
 - [Calculator](/Calculator/index.html)
 - [Chess](/Chess/index.html)
+- [Playing Cards v1](https://jsfiddle.net/te4wrku9/131/)
