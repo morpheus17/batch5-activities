@@ -11,3 +11,4 @@
 - [Calculator](/Calculator/index.html)
 - [Chess](/Chess/index.html)
 - [Playing Cards v1](https://jsfiddle.net/te4wrku9/131/)
+- [Playing Cards v2](https://jsfiddle.net/9m5b8hep/119/)
