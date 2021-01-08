@@ -57,19 +57,16 @@ function getAnswer(question_no){
 }
 
 function startQuiz(){
-    console.log("This quiz will run until all 15 questions are asked");
-    while(Quiz.length>0){
-        let question_no = Math.floor(Math.random() * (Quiz.length-1));
-        askQuestion(question_no);
-        if(getAnswer(question_no)){
-            console.log("correct answer");
-        }else{
-            console.log("incorrect answer");
-        }
-        Quiz.splice(question_no,1);
+
+    let question_no = Math.floor(Math.random() * (Quiz.length-1));
+    askQuestion(question_no);
+    console.log("");
+    if(getAnswer(question_no)){
+        console.log("correct answer");
+    }else{
+        console.log("incorrect answer");
     }
-    console.log("Completed all Quiz questions");
-    console.log("Enter reset(); to reset");
+
 }
 
 function reset(){
