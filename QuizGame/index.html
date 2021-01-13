@@ -7,6 +7,14 @@
     <script src="script.js" async></script>
 </head>
 <body>
-    <h1>Open Dev Console to start</h1>
+    <input type="button" value="Start Quiz" id="start" onclick="startQuiz()">
+    <h2 id="question">Press Start Quiz to start </h2>
+    <div id="question_no" style="display: none;"></div>
+    <p id="ans1"> </p>
+    <p id="ans2"> </p>
+    <p id="ans3"> </p>
+    Answer <input type="text" id="user_ans" disabled>
+    <input type="button" value="Submit" id="submit" onclick="submit()" disabled>
+    <div id="ans_status"></div>
 </body>
 </html>

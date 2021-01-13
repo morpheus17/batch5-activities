@@ -16,6 +16,10 @@ let Quiz_default=[new Question("What does HTML stand for?","1) Hyper Text Markup
 
 let Quiz= Quiz_default.slice(0);
 
+let score=0;
+let streak=0;
+
+
 function Question(question,ans1,ans2,ans3,correct){
     this.question=question;
     this.ans1=ans1;
@@ -26,16 +30,15 @@ function Question(question,ans1,ans2,ans3,correct){
 
 function askQuestion(question_no){
     
-
-    console.log(Quiz[question_no].question);
+    document.getElementById("question").innerHTML="Question: "+Quiz[question_no].question;
     if(Quiz[question_no].ans1 !== undefined){
-        console.log(Quiz[question_no].ans1);
+        document.getElementById("ans1").innerHTML=Quiz[question_no].ans1;
     }
     if(Quiz[question_no].ans2 !== undefined){
-        console.log(Quiz[question_no].ans2);
+        document.getElementById("ans2").innerHTML=Quiz[question_no].ans2;
     }
     if(Quiz[question_no].ans3 !== undefined){
-        console.log(Quiz[question_no].ans3);
+        document.getElementById("ans3").innerHTML=Quiz[question_no].ans3;
     }
     
 }
@@ -43,32 +46,108 @@ function askQuestion(question_no){
 //returns true if correct
 function getAnswer(question_no){
     let user_ans;
-    user_ans = prompt("Enter number of correct answer");
+    
+        // user_ans = prompt("Enter number of correct answer");
+    user_ans = document.getElementById("user_ans").value;
+    
     if(user_ans===null){
         throw new Error('Prompt canceled, terminating Quiz');
     }
-    user_ans=parseInt(user_ans);
+    if(user_ans!=="exit"){
+        user_ans=parseInt(user_ans);
+    }
     console.log("User Answer: "+user_ans);
+    // console.log("user_ans type: "+typeof(user_ans));
+    // console.log("q_no: "+question_no);
+    // console.log("q_no correct ans: "+Quiz[question_no].correct);
     if(user_ans===Quiz[question_no].correct){
-        return true;
+        return "correct";
+    }else if(user_ans==="exit"){
+        return "exit";
     }else{
-        return false;
+        return "incorrect"
+    }
+    
+}
+
+function checkStreak(streak){
+    if(streak%5===0 && streak!==0){
+        return true;
     }
 }
 
-function startQuiz(){
-
+async function startQuiz(){
+    document.getElementById("start").disabled=true;
     let question_no = Math.floor(Math.random() * (Quiz.length-1));
     askQuestion(question_no);
-    console.log("");
-    if(getAnswer(question_no)){
-        console.log("correct answer");
-    }else{
-        console.log("incorrect answer");
-    }
+    document.getElementById("user_ans").disabled=false;
+    document.getElementById("submit").disabled=false;
+    document.getElementById("question_no").innerHTML=question_no;
+}
 
+function submit(){
+
+    let answer="";
+    let question_no=parseInt(document.getElementById("question_no").innerHTML);
+    answer= getAnswer(question_no);
+    // while(answer===""){
+    //     await new Promise(r => setTimeout(r, 5000));
+    // }
+    
+    if(answer==="correct"){
+        console.log("correct answer");
+        alert("correct answer");
+        // setTimeout(function(){
+        //     document.getElementById("ans_status").innerHTML="Correct answer!";
+        //     document.getElementById("ans_status").style.backgroundColor="green";
+        // },1000);  
+        
+        score++;
+        console.log("score: "+score);
+        streak++;
+        console.log("streak: "+streak);
+        if(checkStreak(streak)){
+            // console.log(streak+" in a row!");
+            alert(streak+" in a row!");
+        }
+        document.getElementById("user_ans").value="";
+        startQuiz();
+    }else if(answer==="incorrect"){
+        console.log("incorrect answer");
+        alert("incorrect answer");
+        console.log("score: "+score);
+        streak=0;
+        console.log("streak: "+streak);
+        if(checkStreak(streak)){
+            // console.log(streak+" in a row!");
+            alert(streak+" in a row!");
+        }
+        document.getElementById("user_ans").value="";
+        startQuiz();
+
+    }else{
+        console.log("terminating run");
+        alert("terminating run, score and streak is reset");
+        reset();
+        
+    }
+    
+    
+
+    
 }
 
 function reset(){
     Quiz=Quiz_default;
+    score=0;
+    streak=0;
+    document.getElementById("start").disabled=false;
+    document.getElementById("question").innerHTML="Press Start Quiz to start";
+    document.getElementById("user_ans").value="";
+    document.getElementById("ans1").innerHTML="";
+    document.getElementById("ans2").innerHTML="";
+    document.getElementById("ans3").innerHTML="";
+    
+    document.getElementById("user_ans").disabled=true;
+    document.getElementById("submit").disabled=true;
 }
