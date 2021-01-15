@@ -51,7 +51,7 @@ function sellBook(title,quantity){
 
 function totalEarnings(){
     console.log("Store name: "+Store.name);
-    console.log("Earnings: "+Store.earnings);
+    console.log("Store total earnings: "+Store.earnings+" php");
 }
 
 function listInventory(){
