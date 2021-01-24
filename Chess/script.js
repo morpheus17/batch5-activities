@@ -61,6 +61,7 @@ function onDrop(event) {
     if(!square.hasChildNodes()&&!(square.tagName.toLowerCase()==='img')){ 
         if( checkEnPassant(sqsource_id,sqtarget_id,piece_class) ){
             console.log("pawn can enpassant!");
+            capture(id,square,"enpassant"); 
         }else if(checkValidMove(sqsource_id,sqtarget_id,piece_class) && !isBlocked(sqsource_id,sqtarget_id) ){
             MoveList.push(new Move(sqsource_id,sqtarget_id,piece_class));
             const draggableElement = document.getElementById(id);
@@ -92,15 +93,16 @@ function checkEnPassant(sqsource_id,sqtarget_id,piece_class){
     // let target_color = square.firstChild.id.slice(0,1);
     let sqsource_letter = sqsource_id.slice(0,1);
     let sqsource_letter_digit = getCodeFromLetter(sqsource_letter);
+    let sqtarget_letter = sqtarget_id.slice(0,1);
+    let sqtarget_letter_digit = getCodeFromLetter(sqtarget_letter);
     let sqsource_num = parseInt(sqsource_id.slice(-1));
+    let sqtarget_num = parseInt(sqtarget_id.slice(-1));
 
-    console.log("EP "+source_color);
-    console.log("EP "+sqsource_letter);
-    console.log("EP "+sqsource_letter_digit);
-    console.log("EP "+sqsource_num);
+    // console.log("EP "+source_color);
+    // console.log("EP "+sqsource_letter);
+    // console.log("EP "+sqsource_num);
 
-    if( (source_color==="W" && sqsource_num===5) || (source_color==="B" && sqsource_num===4) ){
-        console.log("enpassant passed here");
+    if( (source_color==="W" && sqsource_num===5 && sqtarget_num===6) || (source_color==="B" && sqsource_num===4 && sqtarget_num===3) ){
         let LastMoveObj = MoveList[MoveList.length-1];
         let LastMoveObj_sourcerow = parseInt(LastMoveObj.sqsource_id.slice(-1));
         let LastMoveObj_targetrow = parseInt(LastMoveObj.sqtarget_id.slice(-1));
@@ -108,10 +110,18 @@ function checkEnPassant(sqsource_id,sqtarget_id,piece_class){
         let LastMoveObj_target_letter_digit = getCodeFromLetter(LastMoveObj_target_letter);
         if( (source_color==="W" && LastMoveObj.piece==="bpawn" && 
             LastMoveObj_sourcerow===7 && LastMoveObj_targetrow===5) &&
-            Math.abs(sqsource_letter_digit-LastMoveObj_target_letter_digit)===1 ){
-                console.log("Passant possible");
+            (sqtarget_letter_digit===LastMoveObj_target_letter_digit && 
+            LastMoveObj_targetrow===sqtarget_num-1) ){
+                console.log("En Passant move valid");
                 return true;
                 
+        }else if( (source_color==="B" && LastMoveObj.piece==="wpawn" && 
+            LastMoveObj_sourcerow===2 && LastMoveObj_targetrow===4) &&
+            (sqtarget_letter_digit===LastMoveObj_target_letter_digit && 
+            LastMoveObj_targetrow===sqtarget_num+1) ){
+                console.log("En Passant move valid");
+                return true;
+
         }
     }
 
@@ -171,12 +181,34 @@ function ValidCapture(sqsource_id,piece_class,square,sqtarget_id){
     return false;
 }
 
-function capture(capturing_piece_id,square){
-    addToCapturedList(square.firstChild);
+//added captured_piece_id for enpassant case
+function capture(capturing_piece_id,square,type=""){
+    
     const draggableElement = document.getElementById(capturing_piece_id);
+
+    let sqtarget_id = square.id
+    let sqtarget_letter = sqtarget_id.slice(0,1);
+    let sqtarget_letter_digit = getCodeFromLetter(sqtarget_letter);
+    let sqtarget_num = parseInt(sqtarget_id.slice(-1));
+
+    if(type==="enpassant"){ //enpassant case
+        if(sqtarget_num===6){ //wpawn captures bpawn
+            let captured_square = document.getElementById((sqtarget_letter+(sqtarget_num-1)));
+            addToCapturedList(captured_square.firstChild);
+            captured_square.innerHTML="";
+        }else{ //otherwise bpawn captures wpawn
+            let captured_square = document.getElementById((sqtarget_letter+(sqtarget_num+1)));
+            addToCapturedList(captured_square.firstChild);
+            captured_square.innerHTML="";
+        }
+        
+    }else{
+        addToCapturedList(square.firstChild);
+        
+    }
+
     square.innerHTML="";
     square.appendChild(draggableElement);
-        
 }
 
 function addToCapturedList(captured_piece){
@@ -197,7 +229,7 @@ function showInvalidMove(square){
 function checkValidMove(sqsource_id,sqtarget_id,piece_class){
     let sqsource_letter = sqsource_id.slice(0,1);
     let sqsource_letter_digit = getCodeFromLetter(sqsource_letter);
-    let sqsource_num = parseInt(sqsource_id.slice(-1));
+    let sqsource_num = parseInt(sqsource_id.slice(-1))
 
     let sqtarget_letter = sqtarget_id.slice(0,1);
     let sqtarget_letter_digit = getCodeFromLetter(sqtarget_letter);
@@ -210,13 +242,13 @@ function checkValidMove(sqsource_id,sqtarget_id,piece_class){
 
 
     if(piece_class==="wpawn"){
-        if( sqsource_letter === sqtarget_letter &&
-            ((sqsource_letter+(sqsource_num+1)) === sqtarget_id || sqtarget_num ===4)){
+        if( (sqsource_letter === sqtarget_letter && (sqsource_letter+(sqsource_num+1)) === sqtarget_id) ||
+            (sqtarget_num ===4 && sqsource_num<sqtarget_num)){
             return true;
         }
     }else if(piece_class==="bpawn"){
-        if( sqsource_letter === sqtarget_letter &&
-            ((sqsource_letter+(sqsource_num-1)) === sqtarget_id || sqtarget_num ===5)){
+        if( (sqsource_letter === sqtarget_letter && (sqsource_letter+(sqsource_num-1)) === sqtarget_id) ||
+            (sqtarget_num ===5 && sqsource_num>sqtarget_num)){
             return true;
         }
     }else if(piece_class==="rook"){
@@ -313,10 +345,10 @@ function isBlocked(sqsource_id,sqtarget_id){
 
 //returns true it finds any piece in between src and target
 function isBlockedCheck(movement,direction,sqsource_letter_digit,sqsource_num,sqtarget_letter_digit,sqtarget_num){
-    console.log(sqsource_letter_digit);
-    console.log(sqsource_num);
-    console.log(sqtarget_letter_digit);
-    console.log(sqtarget_num);
+    // console.log(sqsource_letter_digit);
+    // console.log(sqsource_num);
+    // console.log(sqtarget_letter_digit);
+    // console.log(sqtarget_num);
 
     if(movement==="d"){
         console.log("movement d");
