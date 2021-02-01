@@ -18,18 +18,18 @@ let playState = 0;
 
 /////////////////////////////////////////
 
-function Move(color,sqsource_id,sqtarget_id,piece,capture){
+function Move(color,sqsource_id,sqtarget_id,piece,action){
     this.color=color;
     this.piece=piece;
     this.sqsource_id=sqsource_id;
     this.sqtarget_id=sqtarget_id;
-    if(capture===undefined){
-        this.capture=" ";
+    if(action===undefined){
+        this.action=" ";
     }else{
-        this.capture=capture;
+        this.action=action;
     }
     this.showMove = function(){
-        return this.piece+" "+this.sqsource_id+this.capture+this.sqtarget_id;
+        return this.piece+" "+this.sqsource_id+this.action+this.sqtarget_id;
     }
 }
 
@@ -89,6 +89,7 @@ function onDrop(event) {
                 event.dataTransfer.clearData();
 
                 if(validateCheck()){
+                    MoveList[MoveList.length-1].action="+";
                     alert("CHECK!");
                 }
                 
@@ -111,6 +112,8 @@ function onDrop(event) {
                     document.getElementById("c8").innerHTML=document.getElementById("a8").innerHTML;
                     document.getElementById("a8").innerHTML=""; break;
             }
+
+            MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class,"0-0"));
         }else{
             showInvalidMove(square);
         }
@@ -141,6 +144,7 @@ function onDrop(event) {
                 console.log("playstate 0");
                 MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class,"x"));
                 if(validateCheck()){
+                    MoveList[MoveList.length-1].action="x+";
                     alert("CHECK!");
                 }
             }
