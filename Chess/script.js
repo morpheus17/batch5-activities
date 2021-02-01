@@ -13,7 +13,13 @@ elements.forEach(function(element) {
 
 /////////////////////////////////////////
 
-function Move(sqsource_id,sqtarget_id,piece,capture){
+// 0 is continue play; 1= check state; 2=checkmate state
+let playState = 0;
+
+/////////////////////////////////////////
+
+function Move(color,sqsource_id,sqtarget_id,piece,capture){
+    this.color=color;
     this.piece=piece;
     this.sqsource_id=sqsource_id;
     this.sqtarget_id=sqtarget_id;
@@ -55,6 +61,7 @@ function onDrop(event) {
     let piece_class = document.getElementById(id).className.replace("pieces ","");
     let sqsource_id = document.getElementById(id).parentNode.id;
     let sqtarget_id = square.id;
+    let source_color = document.getElementById(id).id.slice(0,1);
 
     //checkEnPassant(sqsource_id,sqtarget_id,piece_class);
     //allow to move piece if square is a div with no child and not dropped on a piece (img) 
@@ -63,26 +70,221 @@ function onDrop(event) {
             console.log("pawn can enpassant!");
             capture(id,square,"enpassant"); 
         }else if(checkValidMove(sqsource_id,sqtarget_id,piece_class) && !isBlocked(sqsource_id,sqtarget_id) ){
-            MoveList.push(new Move(sqsource_id,sqtarget_id,piece_class));
             const draggableElement = document.getElementById(id);
             square.appendChild(draggableElement);
-            event.dataTransfer.clearData();
+            
+            if(playState===1){
+                console.log("playstate 1");               
+                if(validateCheck() || playState===1){
+                    square.innerHTML="";
+                    showInvalidMove(square);
+                    document.getElementById(sqsource_id).appendChild(draggableElement);
 
+                }else{
+                    MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class));
+                }
+            }else{
+                console.log("playstate 0");
+                MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class));
+                event.dataTransfer.clearData();
+
+                if(validateCheck()){
+                    alert("CHECK!");
+                }
+                
+            }
+        }else if(piece_class==="king" && checkValidCastling(sqsource_id,sqtarget_id,source_color)){    
+            console.log("castling conditions met");
+            const draggableElement = document.getElementById(id);
+            square.appendChild(draggableElement);
+            switch(sqtarget_id){
+                case "g1":
+                    document.getElementById("f1").innerHTML=document.getElementById("h1").innerHTML;
+                    document.getElementById("h1").innerHTML=""; break;
+                case "b1":
+                    document.getElementById("c1").innerHTML=document.getElementById("a1").innerHTML;
+                    document.getElementById("a1").innerHTML=""; break;
+                case "g8":
+                    document.getElementById("f8").innerHTML=document.getElementById("h8").innerHTML;
+                    document.getElementById("h8").innerHTML=""; break;
+                case "b8":
+                    document.getElementById("c8").innerHTML=document.getElementById("a8").innerHTML;
+                    document.getElementById("a8").innerHTML=""; break;
+            }
         }else{
             showInvalidMove(square);
         }
 
     }else{ //target square contains a piece
-        if(!ValidCapture(sqsource_id,piece_class,square,sqtarget_id)){
-        showInvalidMove(square);
+        if(!ValidCapture(piece_class,sqsource_id,square,sqtarget_id)){
+            showInvalidMove(square);
         }else{
-            MoveList.push(new Move(sqsource_id,sqtarget_id,piece_class,"x"));
+            console.log("capture");
             capture(id,square);
+
+            if(playState===1){
+                console.log("playstate 1");               
+                if(validateCheck() || playState===1){
+                    // console.log("resetting");
+                    document.getElementById(sqsource_id).appendChild(square.firstChild);
+                    square.innerHTML="";
+                    let captureList = document.getElementById("captured_pieces");
+                    console.log(captureList.lastChild);
+                    square.appendChild(captureList.lastChild);
+                    // console.log("reset done");
+                    showInvalidMove(square);
+                    
+                }else{
+                    MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class,"x"));
+                }
+            }else{
+                console.log("playstate 0");
+                MoveList.push(new Move(source_color,sqsource_id,sqtarget_id,piece_class,"x"));
+                if(validateCheck()){
+                    alert("CHECK!");
+                }
+            }
+
             event.dataTransfer.clearData();
+            
         }
     }
     
     console.log(MoveList);
+}
+
+function checkValidCastling(sqsource_id,sqtarget_id,source_color){
+    console.log("checking valid castling");
+
+    //king is in check
+    if( validateCheck() || playState===1 ){
+        return false;
+    }
+
+    if(source_color==="W"){
+        
+        if(sqtarget_id==="g1"){     //check kingside castling path
+
+            //check if in right position
+            if( !(sqsource_id==="e1" && sqtarget_id==="g1" && document.getElementById("h1").firstChild.id==="WR2") ){
+                return false;
+            }
+            
+                //check if there are pieces in between castling path
+            if ( document.getElementById("f1").innerHTML!=="" ||
+                document.getElementById("g1").innerHTML!=="" ){
+                return false;
+            }
+            
+            
+
+            //check if king passes by or lands on square attacked by enemy pieces
+            document.getElementById("f1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("g1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("f1").innerHTML="";
+            document.getElementById("g1").innerHTML="";
+        }else{  //queenside castling
+            //check if in right position
+            if( !(sqsource_id==="e1" && sqtarget_id==="b1" && document.getElementById("a1").firstChild.id==="WR1") ){
+                return false;
+            }
+
+            //check if there are pieces in between castling path
+            if ( document.getElementById("b1").innerHTML!=="" || document.getElementById("c1").innerHTML!=="" ||
+                 document.getElementById("d1").innerHTML!==""){
+                return false;
+            }
+
+            //check if king passes by or lands on square attacked by enemy pieces
+            document.getElementById("d1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("c1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("b1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("d1").innerHTML="";
+            document.getElementById("c1").innerHTML="";
+            document.getElementById("b1").innerHTML="";
+        }
+
+        //code to check if king or rook already moved
+
+        
+    }else{
+
+        if(sqtarget_id==="g8"){     //check kingside castling path
+
+            //check if in right position
+            if( !(sqsource_id==="e8" && sqtarget_id==="g8" && document.getElementById("h8").firstChild.id==="BR2") ){
+                return false;
+            }
+            
+                //check if there are pieces in between castling path
+            if ( document.getElementById("f8").innerHTML!=="" || document.getElementById("g8").innerHTML!=="" ){
+                return false;
+            }
+            
+            
+
+            //check if king passes by or lands on square attacked by enemy pieces
+            document.getElementById("f8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("g8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("f8").innerHTML="";
+            document.getElementById("g8").innerHTML="";
+        }else{  //queenside castling
+            //check if in right position
+            if( !(sqsource_id==="e8" && sqtarget_id==="b8" && document.getElementById("a8").firstChild.id==="BR1") ){
+                return false;
+            }
+
+            //check if there are pieces in between castling path
+            if ( document.getElementById("b8").innerHTML!=="" || document.getElementById("c8").innerHTML!=="" ||
+                 document.getElementById("d8").innerHTML!==""){
+                return false;
+            }
+
+            //check if king passes by or lands on square attacked by enemy pieces
+            document.getElementById("d8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("c8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("b8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            if( validateCheck() || playState===1 ){
+                return false;
+            }
+            document.getElementById("d8").innerHTML="";
+            document.getElementById("c8").innerHTML="";
+            document.getElementById("b8").innerHTML="";
+        }
+
+        //code to check if king or rook already moved
+    }
+   
+    //pass the conditions return true
+    return true;
+
 }
 
 function checkEnPassant(sqsource_id,sqtarget_id,piece_class){
@@ -128,7 +330,7 @@ function checkEnPassant(sqsource_id,sqtarget_id,piece_class){
     return false;
 }
 
-function ValidCapture(sqsource_id,piece_class,square,sqtarget_id){
+function ValidCapture(piece_class,sqsource_id,square,sqtarget_id){
     
     let source_color = document.getElementById(sqsource_id).firstChild.id.slice(0,1);
     let target_color = square.firstChild.id.slice(0,1);
@@ -270,7 +472,9 @@ function checkValidMove(sqsource_id,sqtarget_id,piece_class){
                 return true;
         }
     }else if(piece_class==="king"){
-        if ( Math.abs(sqsource_num-sqtarget_num)===1 || Math.abs(sqsource_letter_digit-sqtarget_letter_digit) ===1 ){
+        if ( Math.abs(sqsource_num-sqtarget_num)===1 || (Math.abs(sqsource_letter_digit-sqtarget_letter_digit) ===1 &&
+             Math.abs(sqsource_num-sqtarget_num)<=1 ) ){
+
             return true;
         }
     }else{
@@ -386,6 +590,44 @@ function isBlockedCheck(movement,direction,sqsource_letter_digit,sqsource_num,sq
     }else{ //movement === x
         return false;
     }
+}
+
+function validateCheck(){
+    //Get length of Move list if div by 2 or is 0 color is white
+    if(MoveList[MoveList.length-1].color==="W"){
+        currPlayer_color="W";
+        lastPlayer_color="B";
+    }else{
+        currPlayer_color="B";
+        lastPlayer_color="W";
+        
+    }
+    // console.log(MoveList.length-1);
+    // console.log(currPlayer_color);
+    // console.log(lastPlayer_color);
+
+    // check if last player can capture enemy king next turn
+    let query= "div.cell>img[id^='"+currPlayer_color+"']";
+    currPlayer_pieces = document.querySelectorAll(query);
+    for ( x of currPlayer_pieces ){
+        let piece_class = x.className.replace("pieces ","");
+        let sqsource_id = x.parentNode.id;
+        let square = document.getElementById(lastPlayer_color+"K").parentNode;
+        let sqtarget_id = square.id;
+        
+
+        if(ValidCapture(piece_class,sqsource_id,square,sqtarget_id)){
+        // console.log(piece_class);
+        // console.log(sqsource_id);
+        // console.log(square);
+        // console.log(sqtarget_id);
+        // console.log("---------");
+            playState=1;
+            return true;
+        }
+    }
+    playState=0;
+    return false;
 }
 
 //returns an integer, get corresponding ascii code for letter
