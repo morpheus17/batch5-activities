@@ -183,16 +183,17 @@ function checkValidCastling(sqsource_id,sqtarget_id,source_color){
             
 
             //check if king passes by or lands on square attacked by enemy pieces
-            document.getElementById("f1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("f1").appendChild(document.getElementById(sqsource_id).firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e1").appendChild(document.getElementById("f1").firstChild);
                 return false;
             }
-            document.getElementById("g1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("g1").appendChild(document.getElementById("f1").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e1").appendChild(document.getElementById("g1").firstChild);
                 return false;
             }
-            document.getElementById("f1").innerHTML="";
-            document.getElementById("g1").innerHTML="";
+            document.getElementById("e1").appendChild(document.getElementById("g1").firstChild);
         }else{  //queenside castling
             //check if in right position
             if( !(sqsource_id==="e1" && sqtarget_id==="b1" && document.getElementById("a1").firstChild.id==="WR1") ){
@@ -206,21 +207,22 @@ function checkValidCastling(sqsource_id,sqtarget_id,source_color){
             }
 
             //check if king passes by or lands on square attacked by enemy pieces
-            document.getElementById("d1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("d1").appendChild(document.getElementById(sqsource_id).firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e1").appendChild(document.getElementById("d1").firstChild);
                 return false;
             }
-            document.getElementById("c1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("c1").appendChild(document.getElementById("d1").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e1").appendChild(document.getElementById("c1").firstChild);
                 return false;
             }
-            document.getElementById("b1").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("b1").appendChild(document.getElementById("c1").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e1").appendChild(document.getElementById("b1").firstChild);
                 return false;
             }
-            document.getElementById("d1").innerHTML="";
-            document.getElementById("c1").innerHTML="";
-            document.getElementById("b1").innerHTML="";
+            document.getElementById("e1").appendChild(document.getElementById("b1").firstChild);
         }
 
         //code to check if king or rook already moved
@@ -243,16 +245,18 @@ function checkValidCastling(sqsource_id,sqtarget_id,source_color){
             
 
             //check if king passes by or lands on square attacked by enemy pieces
-            document.getElementById("f8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("f8").appendChild(document.getElementById(sqsource_id).firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e8").appendChild(document.getElementById("f8").firstChild);
                 return false;
             }
-            document.getElementById("g8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("g8").appendChild(document.getElementById("f8").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e8").appendChild(document.getElementById("g8").firstChild);
                 return false;
             }
-            document.getElementById("f8").innerHTML="";
-            document.getElementById("g8").innerHTML="";
+            document.getElementById("e8").appendChild(document.getElementById("g8").firstChild);
+
         }else{  //queenside castling
             //check if in right position
             if( !(sqsource_id==="e8" && sqtarget_id==="b8" && document.getElementById("a8").firstChild.id==="BR1") ){
@@ -266,27 +270,28 @@ function checkValidCastling(sqsource_id,sqtarget_id,source_color){
             }
 
             //check if king passes by or lands on square attacked by enemy pieces
-            document.getElementById("d8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("d8").appendChild(document.getElementById(sqsource_id).firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e8").appendChild(document.getElementById("d8").firstChild);
                 return false;
             }
-            document.getElementById("c8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("c8").appendChild(document.getElementById("d8").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e8").appendChild(document.getElementById("c8").firstChild);
                 return false;
             }
-            document.getElementById("b8").innerHTML=document.getElementById(sqsource_id).innerHTML;
+            document.getElementById("b8").appendChild(document.getElementById("c8").firstChild);
             if( validateCheck() || playState===1 ){
+                document.getElementById("e8").appendChild(document.getElementById("b8").firstChild);
                 return false;
             }
-            document.getElementById("d8").innerHTML="";
-            document.getElementById("c8").innerHTML="";
-            document.getElementById("b8").innerHTML="";
+            document.getElementById("e8").appendChild(document.getElementById("b8").firstChild);
         }
 
         //code to check if king or rook already moved
     }
    
-    //pass the conditions return true
+    //pass the castling conditions return true
     return true;
 
 }
