@@ -65,21 +65,31 @@ function addTestCenter(xml){
 
   let xmlhttp;
   xmlhttp = new XMLHttpRequest();
-  xmlhttp.open("GET", "list.xml", false);
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      xmlDoc = xmlhttp.response;
+      let parser = new DOMParser();
+      let xml = parser.parseFromString( xmlDoc, "text/xml");
+      console.log(xml);
+      console.log(xmlDoc.documentElement.nodeName);
+      for (i=0;i<TestCenters.length;i++){
+        TestCenters[i].pcr_cost=xmlDoc.getElementsByTagName("pcr_cost")[i].childNodes[0].nodeValue;
+        TestCenters[i].antigen_cost=xmlDoc.getElementsByTagName("antigen_cost")[i].childNodes[0].nodeValue;
+        TestCenters[i].payment_modes=xmlDoc.getElementsByTagName("payment_modes")[i].childNodes[0].nodeValue;
+        TestCenters[i].results_available_pcr=xmlDoc.getElementsByTagName("results_available_pcr")[i].childNodes[0].nodeValue;
+        TestCenters[i].results_available_antigen=xmlDoc.getElementsByTagName("results_available_antigen")[i].childNodes[0].nodeValue;
+        TestCenters[i].how_to_avail=xmlDoc.getElementsByTagName("how_to_avail")[i].childNodes[0].nodeValue;
+        TestCenters[i].info=xmlDoc.getElementsByTagName("info")[i].childNodes[0].nodeValue;
+      }
+    }
+  };
+  xmlhttp.open("GET", "https://raw.githubusercontent.com/morpheus17/batch5-activities/main/Covid/list.xml");
+  xmlhttp.responseType = "";
+
   xmlhttp.send();
-  xmlDoc = xmlhttp.responseXML;
+  
 
-  for (i=0;i<TestCenters.length;i++){
-    TestCenters[i].pcr_cost=xmlDoc.getElementsByTagName("pcr_cost")[i].childNodes[0].nodeValue;
-    TestCenters[i].antigen_cost=xmlDoc.getElementsByTagName("antigen_cost")[i].childNodes[0].nodeValue;
-    TestCenters[i].payment_modes=xmlDoc.getElementsByTagName("payment_modes")[i].childNodes[0].nodeValue;
-    TestCenters[i].results_available_pcr=xmlDoc.getElementsByTagName("results_available_pcr")[i].childNodes[0].nodeValue;
-    TestCenters[i].results_available_antigen=xmlDoc.getElementsByTagName("results_available_antigen")[i].childNodes[0].nodeValue;
-    TestCenters[i].how_to_avail=xmlDoc.getElementsByTagName("how_to_avail")[i].childNodes[0].nodeValue;
-    TestCenters[i].info=xmlDoc.getElementsByTagName("info")[i].childNodes[0].nodeValue;
-  }
-
-
+  console.log("done");
   
 }
 
@@ -122,7 +132,7 @@ function initMap() {
           infowindow.setContent("Your Current Location");
           infowindow.open(map);
           map.setCenter(pos);
-          console.log(position.coords.latitude+","+position.coords.longitude);
+          // console.log(position.coords.latitude+","+position.coords.longitude);
         },
         () => {
           handleLocationError(true, infowindow, map.getCenter());
@@ -161,35 +171,7 @@ function initMap() {
   
   
 
-  // const request2 = {
-  //   query: "National Kidney and Transplant Institute",
-  //   fields: ["name", "geometry"],
-  // };
-  // service = new google.maps.places.PlacesService(map);
-  // service.findPlaceFromQuery(request2, (results, status) => {
-  //   if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-  //     for (let i = 0; i < results.length; i++) {
-  //       console.log(results[i]);
-  //       createMarker(results[i]);
-  //     }
-  //     map.setCenter(results[0].geometry.location);
-  //   }
-  // });
-
-  // const request3 = {
-  //   query: "Chinese General Hospital",
-  //   fields: ["name", "geometry"],
-  // };
-  // service = new google.maps.places.PlacesService(map);
-  // service.findPlaceFromQuery(request3, (results, status) => {
-  //   if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-  //     for (let i = 0; i < results.length; i++) {
-  //       console.log(results[i]);
-  //       createMarker(results[i]);
-  //     }
-  //     map.setCenter(results[0].geometry.location);
-  //   }
-  // });
+  
 }
 
 
@@ -218,7 +200,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function addMarkers(){
   // for(i of TestCenters){
-    console.log(i.number);
+    // console.log(i.number);
     const request = {
       query: "Hi-Precision Diagnostic Center",
       fields: ["name", "geometry"],
