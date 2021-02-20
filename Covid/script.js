@@ -21,7 +21,8 @@ myPromise.then(
 
 let TestCenters = [];
 
-function TestCenter(number,region,province,MunOrCity,name,ownersType,testingType,contact,license,lat=0,lng=0,pcr_cost=-1,antigen_cost=-1,results_available="",info=""){
+function TestCenter(number,region,province,MunOrCity,name,ownersType,testingType,contact,license,
+                lat=0,lng=0,pcr_cost=-1,antigen_cost=-1,payment_modes="",results_available_pcr="",results_available_antigen="",how_to_avail="",info=""){
   this.number=number;
   this.region=region;
   this.province=province;
@@ -35,7 +36,10 @@ function TestCenter(number,region,province,MunOrCity,name,ownersType,testingType
   this.lng=lng;
   this.pcr_cost=pcr_cost;
   this.antigen_cost=antigen_cost;
-  this.results_available=results_available;
+  this.payment_modes=payment_modes;
+  this.results_available_pcr=results_available_pcr;
+  this.results_available_antigen=results_available_antigen;
+  this.how_to_avail=how_to_avail;
   this.info=info;
 }
 
@@ -67,19 +71,18 @@ function addTestCenter(xml){
   xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      xmlDoc = xmlhttp.response;
       let parser = new DOMParser();
-      let xml = parser.parseFromString( xmlDoc, "text/xml");
-      console.log(xml);
-      console.log(xmlDoc.documentElement.nodeName);
+      let xmlDoc = parser.parseFromString( xmlhttp.response, "text/xml");
+      console.log(xmlDoc);
+      // console.log(xmlDoc.getElementsByTagName("payment_modes")[0].innerHTML);
       for (i=0;i<TestCenters.length;i++){
-        TestCenters[i].pcr_cost=xmlDoc.getElementsByTagName("pcr_cost")[i].childNodes[0].nodeValue;
-        TestCenters[i].antigen_cost=xmlDoc.getElementsByTagName("antigen_cost")[i].childNodes[0].nodeValue;
-        TestCenters[i].payment_modes=xmlDoc.getElementsByTagName("payment_modes")[i].childNodes[0].nodeValue;
-        TestCenters[i].results_available_pcr=xmlDoc.getElementsByTagName("results_available_pcr")[i].childNodes[0].nodeValue;
-        TestCenters[i].results_available_antigen=xmlDoc.getElementsByTagName("results_available_antigen")[i].childNodes[0].nodeValue;
-        TestCenters[i].how_to_avail=xmlDoc.getElementsByTagName("how_to_avail")[i].childNodes[0].nodeValue;
-        TestCenters[i].info=xmlDoc.getElementsByTagName("info")[i].childNodes[0].nodeValue;
+        TestCenters[i].pcr_cost=xmlDoc.getElementsByTagName("pcr_cost")[i].innerHTML;
+        TestCenters[i].antigen_cost=xmlDoc.getElementsByTagName("antigen_cost")[i].innerHTML;
+        TestCenters[i].payment_modes=xmlDoc.getElementsByTagName("payment_modes")[i].innerHTML;
+        TestCenters[i].results_available_pcr=xmlDoc.getElementsByTagName("results_available_pcr")[i].innerHTML;
+        TestCenters[i].results_available_antigen=xmlDoc.getElementsByTagName("results_available_antigen")[i].innerHTML;
+        TestCenters[i].how_to_avail=xmlDoc.getElementsByTagName("how_to_avail")[i].innerHTML;
+        TestCenters[i].info=xmlDoc.getElementsByTagName("info")[i].innerHTML;
       }
     }
   };

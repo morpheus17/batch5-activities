@@ -2865,7 +2865,7 @@
 <name>Amai Pakpak Medical Center</name>
 <lat>8.004815750388156</lat>
 <lng>124.28395731132044</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>123</pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
 <results_available_pcr></results_available_pcr>
