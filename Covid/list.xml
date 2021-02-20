@@ -2867,7 +2867,7 @@
 <lng>124.28395731132044</lng>
 <pcr_cost>123</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
+<payment_modes>cash and debit</payment_modes>
 <results_available_pcr></results_available_pcr>
 <results_available_antigen></results_available_antigen>
 <how_to_avail></how_to_avail>
