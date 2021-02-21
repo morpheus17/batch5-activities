@@ -76,7 +76,7 @@ function addTestCenter(xml){
     if (this.readyState == 4 && this.status == 200) {
       let parser = new DOMParser();
       let xmlDoc = parser.parseFromString( xmlhttp.response, "text/xml");
-      // console.log(xmlDoc);
+      console.log(xmlDoc);
       // console.log(xmlDoc.getElementsByTagName("payment_modes")[0].innerHTML);
       for (i=0;i<TestCenters.length;i++){
         TestCenters[i].lat=parseFloat(xmlDoc.getElementsByTagName("lat")[i].innerHTML);
