@@ -1,23 +1,4 @@
-let myPromise = new Promise(function(myResolve, myReject) {
-  let req = new XMLHttpRequest();
-  
-  req.open('GET', "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcV9VNy4QeKxwgxqIWu5VEp9C_BNMR_F9_GILC2xlL9m5IPgnIcTYllubiR0SfMzqerucpN4Bgo-S1/pubhtml?gid=1065758412&single=true");
-  req.onload = function() {
-    if (req.status == 200) {
 
-      myResolve(addTestCenter(this));
-    } else {
-      myReject("File not Found");
-    }
-  };
-  req.responseType = "document";
-  req.send();
-});
-
-myPromise.then(
-  function(value) {console.log("promise done");addMarkers();},
-  function(error) {myDisplayer(error);}
-);
 
 let TestCenters = [];
 
@@ -43,6 +24,28 @@ function TestCenter(number,region,province,MunOrCity,name,ownersType,testingType
   this.info=info;
 }
 
+//Get DOH licensed testing centers sheet
+
+let myPromise = new Promise(function(myResolve, myReject) {
+  let req = new XMLHttpRequest();
+  
+  req.open('GET', "https://docs.google.com/spreadsheets/d/e/2PACX-1vQcV9VNy4QeKxwgxqIWu5VEp9C_BNMR_F9_GILC2xlL9m5IPgnIcTYllubiR0SfMzqerucpN4Bgo-S1/pubhtml?gid=1065758412&single=true");
+  req.onload = function() {
+    if (req.status == 200) {
+
+      myResolve(addTestCenter(this));
+    } else {
+      myReject("File not Found");
+    }
+  };
+  req.responseType = "document";
+  req.send();
+});
+
+myPromise.then(
+  function(value) {console.log("promise done");},
+  function(error) {myDisplayer(error);}
+);
 
 function addTestCenter(xml){
   let xmlDoc = xml.response;
@@ -73,33 +76,37 @@ function addTestCenter(xml){
     if (this.readyState == 4 && this.status == 200) {
       let parser = new DOMParser();
       let xmlDoc = parser.parseFromString( xmlhttp.response, "text/xml");
-      console.log(xmlDoc);
+      // console.log(xmlDoc);
       // console.log(xmlDoc.getElementsByTagName("payment_modes")[0].innerHTML);
       for (i=0;i<TestCenters.length;i++){
-        TestCenters[i].pcr_cost=xmlDoc.getElementsByTagName("pcr_cost")[i].innerHTML;
-        TestCenters[i].antigen_cost=xmlDoc.getElementsByTagName("antigen_cost")[i].innerHTML;
+        TestCenters[i].lat=parseFloat(xmlDoc.getElementsByTagName("lat")[i].innerHTML);
+        TestCenters[i].lng=parseFloat(xmlDoc.getElementsByTagName("lng")[i].innerHTML);
+        TestCenters[i].pcr_cost=parseInt(xmlDoc.getElementsByTagName("pcr_cost")[i].innerHTML.replace(",","").replace(".",""));
+        TestCenters[i].antigen_cost=parseInt(xmlDoc.getElementsByTagName("antigen_cost")[i].innerHTML.replace(",","").replace(".",""));
         TestCenters[i].payment_modes=xmlDoc.getElementsByTagName("payment_modes")[i].innerHTML;
         TestCenters[i].results_available_pcr=xmlDoc.getElementsByTagName("results_available_pcr")[i].innerHTML;
         TestCenters[i].results_available_antigen=xmlDoc.getElementsByTagName("results_available_antigen")[i].innerHTML;
         TestCenters[i].how_to_avail=xmlDoc.getElementsByTagName("how_to_avail")[i].innerHTML;
         TestCenters[i].info=xmlDoc.getElementsByTagName("info")[i].innerHTML;
       }
+
+      console.log(xmlDoc.getElementsByTagName("number").length);
+
+      //create map marker for all test centers
+      for(i of TestCenters){
+        // console.log(i.number);
+        createMarker(i);
+        
+      }
     }
   };
   xmlhttp.open("GET", "https://raw.githubusercontent.com/morpheus17/batch5-activities/main/Covid/list.xml");
   xmlhttp.responseType = "";
-
   xmlhttp.send();
-  
-
-  console.log("done");
   
 }
 
 
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIwzALxUPNbatRBj3Xi1Uhp0fFzwWNBkE&libraries=places">
 let map;
 let service;
 let infowindow;
@@ -147,46 +154,24 @@ function initMap() {
     }
   });
 
-  /*
-  
-  Get Testing centers functionality
-  
-  */ 
-
-  //set markers to all testing centers
-  // let x = TestCenters[0].name;
-    const request = {
-      query: "Manila City Hall",
-      fields: ["name", "geometry"],
-    };
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        for (let i = 0; i < results.length; i++) {
-          createMarker(results[i]);
-        }
-        // console.log(JSON.parse(JSON.stringify(results[0].geometry.location)));
-        // console.log(typeof(results[0].geometry.location.lat));
-        // console.log(results[0].geometry.location["lng"]);
-        map.setCenter(results[0].geometry.location);
-      }
-    });
-  
-  
-
-  
 }
 
 
 
-function createMarker(place) {
-  if (!place.geometry || !place.geometry.location) return;
+function createMarker(TestObj) {
+  
+  let coordinates={
+    lat:TestObj.lat,
+    lng:TestObj.lng
+  }
+
+  // console.log(coordinates);
   const marker = new google.maps.Marker({
     map,
-    position: place.geometry.location,
+    position: coordinates,
   });
   google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
+    infowindow.setContent(TestObj.name || "");
     infowindow.open(map,marker);
   });
 }
@@ -201,27 +186,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infowindow.open(map);
 }
 
-function addMarkers(){
-  // for(i of TestCenters){
-    // console.log(i.number);
-    const request = {
-      query: "Hi-Precision Diagnostic Center",
-      fields: ["name", "geometry"],
-    };
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        for (let i = 0; i < results.length; i++) {
-          createMarker(results[i]);
-        }
-        console.log((JSON.stringify(results[0].geometry.location)));
-        // console.log(typeof(results[0].geometry.location.lat));
-        // console.log(results[0].geometry.location["lng"]);
-        map.setCenter(results[0].geometry.location);
-      }
-    });
-  // }
-}
 
 
 

@@ -7,24 +7,24 @@
 <lng>121.04354422668645</lng>
 <pcr_cost>6,000</pcr_cost>
 <antigen_cost>2,500</antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
-<results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<payment_modes>Credit or debit card</payment_modes>
+<results_available_pcr>Sent via email within five to seven days</results_available_pcr>
+<results_available_antigen>Sent via email within four hours</results_available_antigen>
+<how_to_avail>Book an online appointment via ahmc-onlineregistration.hopprlab.com at least 24 hours before your preferred schedule.</how_to_avail>
+<info>src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>2</number>
 <name>Chinese General Hospital</name>
 <lat>14.625882662746715</lat>
 <lng>120.98861309785187</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>5,500</pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<results_available_pcr>Can be viewed online after six hours to five days (depending on your chosen service) via cghmc.com.ph/online/booking/covid-19-pcr-test-result</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<how_to_avail>Walk-ins are accommodated on a first-come, first-served basis. But for convenience, set an online appointment via cghmc.com.ph/online/booking.</how_to_avail>
+<info>Regular RT-PCR test (3 to 5-day processing): PHP 5,500; STAT-Express (24 to 48-hour processing): PHP 13,000; Super STAT (6 to 8-hour processing): PHP 19,000; src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html </info>
 </facility>
 <facility>
 <number>3</number>
@@ -96,13 +96,13 @@
 <name>Makati Medical Center</name>
 <lat>14.55919073895958</lat>
 <lng>121.01462275552291</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>8,150</pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
-<results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<results_available_pcr>24 to 48 hours</results_available_pcr>
+<results_available_antigen>12 to 24 hours</results_available_antigen>
+<how_to_avail>Book an appointment through any of the following channels: MMC COVID-19 hotline: (02) 8888-8999 local 7335 Email: central.registration@makatimed.net.ph / covid.hotline@makatimed.net.ph</how_to_avail>
+<info>src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>9</number>
@@ -135,12 +135,12 @@
 <name>Philippine Red Cross - National Blood Center</name>
 <lat>14.573170480293017</lat>
 <lng>121.04683591341393</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -148,12 +148,12 @@
 <name>Philippine Red Cross Logistics and Multipurpose Center</name>
 <lat>14.572514248502323</lat>
 <lng>121.0460728174371</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -161,12 +161,12 @@
 <name>Philippine Red Cross - Port Area</name>
 <lat>14.591630708062873</lat>
 <lng>120.97003009970192</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -213,26 +213,26 @@
 <name>St. Luke's Medical Center - BGC (HB)</name>
 <lat>14.555205987105266</lat>
 <lng>121.04816545367296</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,300</pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
 <results_available_pcr></results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<how_to_avail>Walk-ins are no longer accepted. Book an appointment at least two days before your preferred swabbing schedule through any of the following channels (available from Mondays to Fridays, 8 a.m. to 5 p.m.):</how_to_avail>
+<info>Drive-thru: PHP 6,500; Outpatient: PHP 4,300; src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>18</number>
 <name>St. Luke's Medical Center - BGC (HB)</name>
 <lat>14.555205987105266</lat>
 <lng>121.04816545367296</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,300</pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
 <results_available_pcr></results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<how_to_avail>Walk-ins are no longer accepted. Book an appointment at least two days before your preferred swabbing schedule through any of the following channels (available from Mondays to Fridays, 8 a.m. to 5 p.m.):</how_to_avail>
+<info>Drive-thru: PHP 6,500; Outpatient: PHP 4,300; src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>19</number>
@@ -265,13 +265,13 @@
 <name>The Medical City - Ortigas</name>
 <lat>14.589747164558592</lat>
 <lng>121.06921382483729</lng>
-<pcr_cost></pcr_cost>
-<antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
-<results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<pcr_cost>6,000</pcr_cost>
+<antigen_cost>2,200</antigen_cost>
+<payment_modes>Cash and credit card</payment_modes>
+<results_available_pcr>Sent via email within 48 to 72 hours</results_available_pcr>
+<results_available_antigen>Sent via email within 24 hours</results_available_antigen>
+<how_to_avail>RT-PCR test: Book an online appointment via themedicalcity.com/covidtest. ECLIA test: Only walk-ins are accepted. No need to register. Just go straight to the drive-thru facility at the back of TMC.</how_to_avail>
+<info>src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>22</number>
@@ -1058,13 +1058,13 @@
 <name>Cardinal Santos Medical Center</name>
 <lat>14.598076899542232</lat>
 <lng>121.04550251134462</lng>
-<pcr_cost></pcr_cost>
-<antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
-<results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
-<info></info>
+<pcr_cost>7500</pcr_cost>
+<antigen_cost>1600</antigen_cost>
+<payment_modes>Credit card</payment_modes>
+<results_available_pcr>Sent via email after five to seven working days</results_available_pcr>
+<results_available_antigen>Can be viewed online within 24 hours via csmcresults.com.ph</results_available_antigen>
+<how_to_avail>You may get tested without an appointment. For a lower swab test or rapid test price, book a schedule online via www.csmceconsult.com.</how_to_avail>
+<info>src: https://ph.news.yahoo.com/running-list-covid-19-testing-080056282.html</info>
 </facility>
 <facility>
 <number>83</number>
@@ -1383,12 +1383,12 @@
 <name>Philippine Red Cross Isabela Molecular Laboratory</name>
 <lat>17.105059539826826</lat>
 <lng>121.86252082906418</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -1448,12 +1448,12 @@
 <name>Philippine Red Cross - Logistics and Training Center</name>
 <lat>14.782509497659387</lat>
 <lng>120.28584713013234</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -1461,12 +1461,12 @@
 <name>Philippine Red Cross - Clark Molecular Laboratory</name>
 <lat>15.200608745763482</lat>
 <lng>120.54152476848931</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -1669,12 +1669,12 @@
 <name>Philippine Red Cross- Batangas Chapter Molecular Laboratory</name>
 <lat>13.76599260025699</lat>
 <lng>121.0652054825045</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2150,12 +2150,12 @@
 <name>Philippine Red Cross Passi City Molecular Laboratory</name>
 <lat>11.122046702120645</lat>
 <lng>122.64818189968555</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2202,12 +2202,12 @@
 <name>Philippine Red Cross Cebu Molecular Laboratory</name>
 <lat>10.314033957762518</lat>
 <lng>123.89189726876081</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2436,12 +2436,12 @@
 <name>Philippine Red Cross - Molecular Biology Laboratory</name>
 <lat>6.903546177706055</lat>
 <lng>122.07841795549776</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2540,12 +2540,12 @@
 <name>Philippine Red Cross - Cagayan De Oro</name>
 <lat>8.484870833521185</lat>
 <lng>124.64906254015715</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2774,12 +2774,12 @@
 <name>Philippine Red Cross Molecular Laboratory</name>
 <lat>9.729281256284644</lat>
 <lng>125.49926309598125</lng>
-<pcr_cost></pcr_cost>
+<pcr_cost>4,000</pcr_cost>
 <antigen_cost></antigen_cost>
-<payment_modes></payment_modes>
-<results_available_pcr></results_available_pcr>
+<payment_modes>Direct bank deposit or fund transfer, GCash, PayMaya</payment_modes>
+<results_available_pcr>Sent via email after 24 to 48 hours</results_available_pcr>
 <results_available_antigen></results_available_antigen>
-<how_to_avail></how_to_avail>
+<how_to_avail>Red Cross accepts bookings for COVID-19 test from individuals, as well as companies and agencies that need to have their employees tested. Book a schedule by calling the COVID-19 hotline 1158 or download the RC143 app and connect to Viber chat.</how_to_avail>
 <info></info>
 </facility>
 <facility>
@@ -2862,6 +2862,32 @@
 </facility>
 <facility>
 <number>221</number>
+<name>Amai Pakpak Medical Center</name>
+<lat>8.004815750388156</lat>
+<lng>124.28395731132044</lng>
+<pcr_cost>123</pcr_cost>
+<antigen_cost></antigen_cost>
+<payment_modes>cash and debit</payment_modes>
+<results_available_pcr></results_available_pcr>
+<results_available_antigen></results_available_antigen>
+<how_to_avail></how_to_avail>
+<info></info>
+</facility>
+</list>
+<number>222</number>
+<name>Amai Pakpak Medical Center</name>
+<lat>8.004815750388156</lat>
+<lng>124.28395731132044</lng>
+<pcr_cost>123</pcr_cost>
+<antigen_cost></antigen_cost>
+<payment_modes>cash and debit</payment_modes>
+<results_available_pcr></results_available_pcr>
+<results_available_antigen></results_available_antigen>
+<how_to_avail></how_to_avail>
+<info></info>
+</facility>
+</list>
+<number>223</number>
 <name>Amai Pakpak Medical Center</name>
 <lat>8.004815750388156</lat>
 <lng>124.28395731132044</lng>
