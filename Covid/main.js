@@ -1,5 +1,3 @@
-
-
 let TestCenters = [];
 
 function TestCenter(number,region,province,MunOrCity,name,ownersType,testingType,contact,license,
