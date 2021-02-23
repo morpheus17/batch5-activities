@@ -248,6 +248,7 @@ function showMarkersRegion(region){
     if(i.region===region){
       // console.log(i.name);
       createMarker(i);
+      map.setZoom(10);
     }
   }
 }
