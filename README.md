@@ -14,3 +14,4 @@
 - [Playing Cards v2](https://jsfiddle.net/9m5b8hep/119/)
 - [Quiz Game](/QuizGame/index.html)
 - [Bookstore](/Bookstore/index.html)
+- [Covid Testing Center Finder](/Covid/index2.html)
