@@ -148,7 +148,7 @@ function addTestCenter(xml){
           i++;
         }else{
           console.log("skipping DOH data "+TestCenterObj.number+" "+TestCenterObj.name+" coordinates not set");
-          // console.log(i+" "+xmlDoc.getElementsByTagName("name")[i].innerHTML+" "+xmlDoc.getElementsByTagName("number")[i].innerHTML);
+          console.log(i+" "+xmlDoc.getElementsByTagName("name")[i].innerHTML+" "+xmlDoc.getElementsByTagName("number")[i].innerHTML);
           // console.log("coordinates not set");
 
         }
