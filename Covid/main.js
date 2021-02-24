@@ -253,6 +253,17 @@ function showMarkersRegion(region){
   }
 }
 
+function showMarkerSingle(name){
+  deleteMarkers();
+  for(i of TestCenters){
+    if(i.name===name){
+      // console.log(i.name);
+      createMarker(i);
+      map.setZoom(14);
+    }
+  }
+}
+
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
   for (i of MapMarkers) {
@@ -294,28 +305,45 @@ function showCards(){
     document.getElementById("search_content").innerHTML += 
     '<div class="card w-75" style="border:1px solid gray;padding:5px;">'+
     '<div class="card-body">'+
-    '<h5 class="card-title">'+i.name+'</h5>'+
-    '<p class="card-text">'+i.region+'</p>'+
-    '<a href="#" class="btn btn-primary">Go to Location</a>'+
+    '<h3 class="card-title">'+i.name+'</h3>'+
+    '<p class="card-text">'+'<strong>Region: </strong>'+i.region+'</p>'+
+    '<p class="card-text">'+'<strong>Municipality or City: </strong>'+i.MunOrCity+'</p>'+
+    '<p class="card-text">'+'<strong>Swab test cost: </strong>'+i.pcr_cost+'</p>'+
+    '<p class="card-text">'+'<strong>Antigen test cost: </strong>'+i.antigen_cost+'</p>'+
+    "<a href='#' class='btn btn-primary' onclick='showOnlyMenu(&quot;map&quot;); showMarkerSingle(&quot;"+i.name+"&quot;);return false;'>Go to Location</a>"+
     '</div>'+
     '</div>';
   }
 }
 
 function realtimeSearch(){
+  // var input, filter, ul, li, a, i;
+  // input = document.getElementById("mySearch");
+  // filter = input.value.toUpperCase();
+  // ul = document.getElementById("myMenu");
+  // li = ul.getElementsByTagName("li");
+  // for (i = 0; i < li.length; i++) {
+  //   a = li[i].getElementsByTagName("a")[0];
+  //   if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+  //     li[i].style.display = "";
+  //   } else {
+  //     li[i].style.display = "none";
+  //   }
+  // }
+
   var input, filter, ul, li, a, i;
   input = document.getElementById("mySearch");
   filter = input.value.toUpperCase();
-  ul = document.getElementById("myMenu");
-  li = ul.getElementsByTagName("li");
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
+
+  for (i of document.getElementsByClassName("card-body")) {
+    a = i.getElementsByTagName("h3")[0];
     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+      i.parentNode.style.display = "";
     } else {
-      li[i].style.display = "none";
+      i.parentNode.style.display = "none";
     }
   }
+
 }
 
 
