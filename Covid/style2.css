@@ -164,3 +164,14 @@
  #ex1Slider .slider-selection {
 	background: #BABABA;
 }
+
+#search_content { 
+   margin:4px, 4px; 
+   padding:4px; 
+   /* background-color: green;  */
+   width: 800px; 
+   height: 800px; 
+   overflow-x: hidden; 
+   overflow-y: auto; 
+   text-align:justify; 
+} 

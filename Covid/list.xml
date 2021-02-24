@@ -1381,12 +1381,13 @@
 <info></info>
 </facility>
 <facility>
+<facility>
 <number>93</number>
-<name>Ospital ng Parañaque District II</name>
+<name>F.Y. Manalo Medical Foundation, Inc</name>
 <region></region>
 <MunOrCity></MunOrCity>
-<lat>14.488278424394286</lat>
-<lng>121.02437283445012</lng>
+<lat>14.716420304244423</lat>
+<lng>121.05662958435975</lng>
 <pcr_cost></pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
@@ -1395,13 +1396,12 @@
 <how_to_avail></how_to_avail>
 <info></info>
 </facility>
-<facility>
 <number>94</number>
-<name>F.Y. Manalo Medical Foundation, Inc</name>
+<name>Ospital ng Parañaque District II</name>
 <region></region>
 <MunOrCity></MunOrCity>
-<lat>14.716420304244423</lat>
-<lng>121.05662958435975</lng>
+<lat>14.488302618194062</lat>
+<lng>121.02429621134402</lng>
 <pcr_cost></pcr_cost>
 <antigen_cost></antigen_cost>
 <payment_modes></payment_modes>
