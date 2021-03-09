@@ -8,6 +8,6 @@ def smallest_integer(array)
     }
 
     puts smallest
-}
+end
 
 smallest_integer([34, -345, -1, 100])
